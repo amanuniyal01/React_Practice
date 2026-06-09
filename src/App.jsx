@@ -1,6 +1,7 @@
 import React from 'react'
 import ProductDetails from './components/PropsAndComponents/ProductDetails'
 import DisplayAsYouWant from './components/StatesAndEventHandlers/DisplayAsYouWant'
+import Multideropsown from './components/Multidropdown/Multideropsown'
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       {/* <ProductDetails heading="Cotton Socks" para="Price : $10.9" discountPrice="$5.45" />
       <ProductDetails heading="Plain T-shirt" para="Price : $20.9" discountPrice="" />
       <ProductDetails heading="Tennis Ball" para="Price : $15.5" discountPrice="" /> */}
-      <DisplayAsYouWant />
+      {/* <DisplayAsYouWant /> */}
+      <Multideropsown />
 
     </>
   )
