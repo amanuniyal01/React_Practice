@@ -15,9 +15,9 @@ function App() {
       <ProductDetails heading="Plain T-shirt" para="Price : $20.9" discountPrice="" />
       <ProductDetails heading="Tennis Ball" para="Price : $15.5" discountPrice="" /> */}
         {/* <DisplayAsYouWant /> */}
-        {/* <Multideropsown />
-       */}
-        <ChipsInput />
+        <Multideropsown />
+
+        {/* <ChipsInput /> */}
 
       </>
     </Provider>

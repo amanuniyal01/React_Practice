@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearAll, selectAll, toggleOption } from '../../utils/DropDownSlice'
 
 const options = [
     { id: 1, label: "Option 1", value: "option 1" },
@@ -11,11 +13,12 @@ const options = [
 
 function Multidropdown() {
     const [isOpen, setIsOpen] = useState(false)
-    const [selectedValues, setSelectedValues] = useState([])
+    // const [selectedValues, setSelectedValues] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
     const dropdownRef = useRef(null)
     const searchRef = useRef()
-
+    const dispatch = useDispatch()
+    const selectedValues = useSelector((store) => store.dropdown.selectedValues)
     const filteredOptions = useMemo(() =>
         options.filter((option) =>
             option.label.toLowerCase().includes(searchTerm.toLowerCase())
@@ -24,16 +27,12 @@ function Multidropdown() {
     const isAllSelected = selectedValues.length === options.length
 
     const handleOptions = (option) => {
-        setSelectedValues((prev) => {
-            const exists = prev.find((item) => item.id === option.id)
-            return exists
-                ? prev.filter((item) => item.id !== option.id)
-                : [...prev, option]
-        })
+        dispatch(toggleOption(option))
+
     }
 
     const handleSelectAll = () => {
-        setSelectedValues(isAllSelected ? [] : options)
+        dispatch(selectAll(isAllSelected ? [] : options))
     }
 
     const handleClear = (value) => {
@@ -84,8 +83,11 @@ function Multidropdown() {
                             <span
                                 role="button"
                                 tabIndex={0}
-                                onClick={(e) => { e.stopPropagation(); setSelectedValues([]) }}
-                                onKeyDown={(e) => e.key === 'Enter' && setSelectedValues([])}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    dispatch(clearAll())
+                                }}
+                                // onKeyDown={(e) => e.key === 'Enter' && setSelectedValues([])}
                                 className="text-xs text-red-400 hover:text-red-600 font-normal transition-colors"
                             >
                                 Clear all
