@@ -1,22 +1,27 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addChips, clearChips, removeChips } from '../../utils/ChipsSlice'
+
 
 function ChipsInput() {
     const [input, setInput] = useState("")
-    const [chips, setChips] = useState([])
+    // const [chips, setChips] = useState([])
     const [search, setSearch] = useState("")
+    const chips = useSelector((store) => store.chips.items)
+    const dispatch = useDispatch()
 
     const handleChips = () => {
         const trimmed = input.trim()
 
         if (!trimmed || chips.includes(trimmed)) return
 
-        setChips(prev => [...prev, trimmed])
+        dispatch(addChips(trimmed))
         setInput("")
 
     }
 
     const handleRemove = (indexToRemove) => {
-        setChips(prev => prev.filter((_, index) => index !== indexToRemove))
+        dispatch(removeChips(indexToRemove))
     }
 
     const filteredChips = chips.filter((chip) =>
@@ -44,7 +49,7 @@ function ChipsInput() {
 
                 {chips.length > 0 && (
                     <span
-                        onClick={() => setChips([])}
+                        onClick={() => dispatch(clearChips())}
                         className='bg-red-400 cursor-pointer p-2 rounded-lg ml-2'
                     >
                         Clear all
