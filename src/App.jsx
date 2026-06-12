@@ -14,8 +14,8 @@ function App() {
         {/* <ProductDetails heading="Cotton Socks" para="Price : $10.9" discountPrice="$5.45" />
       <ProductDetails heading="Plain T-shirt" para="Price : $20.9" discountPrice="" />
       <ProductDetails heading="Tennis Ball" para="Price : $15.5" discountPrice="" /> */}
-        {/* <DisplayAsYouWant /> */}
-        <Multideropsown />
+        <DisplayAsYouWant />
+        {/* <Multideropsown /> */}
 
         {/* <ChipsInput /> */}
 

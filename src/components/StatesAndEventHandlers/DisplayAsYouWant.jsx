@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addText, Reset } from '../../utils/DisplaySlice'
 
 function DisplayAsYouWant() {
-    const [input, setInput] = useState("")
     const [isTextShow, setIsTextShow] = useState(false)
+    const dispatch = useDispatch()
+    const input = useSelector((store) => store.display.input)
     const handleReset = () => {
-        setInput("")
+        dispatch(Reset())
         setIsTextShow(false)
     }
-    const handleExample = () => setInput("Hello States")
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             setIsTextShow(true)
         }
         if (e.key === "Escape") {
-            setInput("")
+            dispatch(Reset)
         }
 
     }
@@ -29,7 +31,7 @@ function DisplayAsYouWant() {
 
                 <input
                     className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-                    onChange={(e) => setInput(e.target.value)}
+                    onChange={(e) => dispatch(addText((e.target.value)))}
                     value={input}
                     onKeyDown={handleKeyDown}
                     placeholder="Enter the text"
@@ -50,7 +52,7 @@ function DisplayAsYouWant() {
                     </button>
 
                     <button
-                        onClick={handleExample}
+                        onClick={() => dispatch(addText("Hello Example"))}
                         className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition"
                     >
                         Example
