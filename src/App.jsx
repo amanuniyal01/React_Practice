@@ -5,6 +5,7 @@ import Multideropsown from './components/Multidropdown/Multideropsown'
 import ChipsInput from './components/ChipsInput/ChipsInput'
 import { Provider } from 'react-redux'
 import store from './utils/store'
+import EvenOrOddChecker from './components/EvenOdd/EvenOdd'
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
         {/* <ProductDetails heading="Cotton Socks" para="Price : $10.9" discountPrice="$5.45" />
       <ProductDetails heading="Plain T-shirt" para="Price : $20.9" discountPrice="" />
       <ProductDetails heading="Tennis Ball" para="Price : $15.5" discountPrice="" /> */}
-        <DisplayAsYouWant />
+        {/* <DisplayAsYouWant /> */}
         {/* <Multideropsown /> */}
 
         {/* <ChipsInput /> */}
+        <EvenOrOddChecker />
 
       </>
     </Provider>
