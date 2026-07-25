@@ -6,6 +6,7 @@ import ChipsInput from './components/ChipsInput/ChipsInput'
 import { Provider } from 'react-redux'
 import store from './utils/store'
 import EvenOrOddChecker from './components/EvenOdd/EvenOdd'
+import { PracticeQuestion } from './components/practice/Practice'
 
 function App() {
   return (
@@ -19,8 +20,8 @@ function App() {
         {/* <Multideropsown /> */}
 
         {/* <ChipsInput /> */}
-        <EvenOrOddChecker />
-
+        {/* <EvenOrOddChecker /> */}
+        <PracticeQuestion />
       </>
     </Provider>
   )
